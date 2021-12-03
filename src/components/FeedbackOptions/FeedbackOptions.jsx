@@ -1,5 +1,4 @@
 import React from 'react';
-import shortid from 'shortid';
 import PropTypes from 'prop-types';
 import c from './FeedbackOptions.module.css';
 
@@ -8,7 +7,7 @@ const FeedbackOptions = ({ options, onLeaveFeedback }) => {
     <>
       {options.map(option => (
         <button
-          key={shortid.generate()}
+          key={option}
           type="button"
           name={option}
           className={c.btn}
@@ -22,7 +21,7 @@ const FeedbackOptions = ({ options, onLeaveFeedback }) => {
 };
 
 FeedbackOptions.propTypes = {
-  options: PropTypes.array.isRequired,
+  options: PropTypes.arrayOf(PropTypes.string.isRequired),
   onLeaveFeedback: PropTypes.func.isRequired,
 };
 
